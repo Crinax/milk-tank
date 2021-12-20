@@ -58,22 +58,8 @@ export default defineComponent({
     async sendForm() {
       if (!this.isLowerThanOneOrFolat && this.name.length !== 0) {
         const { name, litters } = this;
-        let response;
 
-        try {
-          response = await axios.post<APIResponse>('http://localhost:3000/api/v1/fill', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            data: { name, litters },
-          });
-        } catch (err) {
-          this.isServerError = true;
-          this.errorMessage = 'Error. Check your internet connection';
-          console.log(err);
-          return;
-        }
+        const response = await axios.post<APIResponse>('http://localhost:3000/api/v1/fill', { name, litters });
 
         if (response.data) {
           const { data } = response;

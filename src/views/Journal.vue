@@ -1,5 +1,15 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <Table />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import Table from '@/components/Table.vue';
+
+export default defineComponent({
+  name: 'Home',
+  components: {
+    Table,
+  },
+});
+</script>

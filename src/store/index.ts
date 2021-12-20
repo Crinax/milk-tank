@@ -1,18 +1,19 @@
 import { createStore } from 'vuex';
+import axios from 'axios';
 
 export default createStore({
   state: {
     journal: [],
   },
   mutations: {
-    setUsers(state, journal) {
+    setJournal(state, journal) {
       state.journal = journal;
     },
   },
   actions: {
-    async setUsers({ commit }) {
-      const users = await fetch('http://localhost:3000/');
-      commit('setUsers', users);
+    async setJournal({ commit }) {
+      const journal = await axios.get('http://localhost:3000/api/v1/journal');
+      commit('setJournal', journal);
     },
   },
   modules: { },
